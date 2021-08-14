@@ -1,0 +1,33 @@
+{
+    "name": "__MSG_appName__",
+    "version": "1.0.0",
+    "description": "__MSG_appDescription__",
+    "default_locale": "en",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "content.js",
+                "contentMessaging.js",
+                "contentRequests.js"
+            ],
+            "exclude_matches": ["https://*.youtube.com/watch*"],
+            "matches": ["https://*.youtube.com/*"],
+            "run_at": "document_end"
+        }
+    ],
+    "permissions": ["bookmarks", "storage", "tabs"],
+    "host_permissions": ["https://api.github.com/*", "*://*/*"],
+    "icons": {
+        "16": "ytd.png",
+        "48": "ytd.png",
+        "128": "ytd.png"
+    },
+    "action": {
+        "default_title": "Created by Suthinan",
+        "default_popup": "popup.html"
+    }
+}
