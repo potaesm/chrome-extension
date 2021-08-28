@@ -20,10 +20,10 @@ window.onload = () => {
         });
     });
 
-    button.addEventListener('click', () => enableDareMode());
+    button.addEventListener('click', () => enableDarkMode());
 };
 
-function enableDareMode() {
+function enableDarkMode() {
     document.getElementsByTagName('ytd-app')[0].style.backgroundColor = 'blue';
 }
 
@@ -32,7 +32,7 @@ function checkSetting() {
         const isEnabled = !!result.enabled;
         document.getElementById('darkSetting').checked = isEnabled;
         if (isEnabled) {
-            enableDareMode();
+            enableDarkMode();
         }
     });
 }

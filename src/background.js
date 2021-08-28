@@ -18,12 +18,10 @@ chrome.action.onClicked.addListener((tab) => {
 /** From content to background */
 chrome.runtime.onMessage.addListener((request, sender, response) => {
     console.log(request, sender);
-    response('Hello World');
+    response('Hello from background');
 });
 
 /** From background to content */
-chrome.bookmarks.onMoved.addListener(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-        chrome.tabs.sendMessage(tabs[0].id, { name: 'Suthinan' });
-    });
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    chrome.tabs.sendMessage(tabId, { changeInfo, tab });
 });
